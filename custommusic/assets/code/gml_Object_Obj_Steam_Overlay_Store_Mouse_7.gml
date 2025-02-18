@@ -1,0 +1,1 @@
+steam_activate_overlay_store(steam_get_app_id())

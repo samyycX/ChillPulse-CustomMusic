@@ -1,0 +1,7 @@
+particle_system = part_system_create_layer("WEATHER", 0)
+particle_snow = part_type_create()
+part_type_sprite(particle_snow, spr_particle_snow, 0, 0, 1)
+part_type_size(particle_snow, 0.5, 1.2, 0, 0)
+part_type_speed(particle_snow, 0.4, 0.6, 0, 0)
+part_type_direction(particle_snow, 270, 270, 0, 0)
+particle_snowcloud = part_type_create()

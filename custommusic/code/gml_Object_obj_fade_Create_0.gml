@@ -1,0 +1,11 @@
+color = 0
+alpha = 0
+duration = 60
+targetroom = -1
+timer2 = 300
+timer = 0
+state = 0
+depth = -9999
+girl_cloth = -1
+pet = -1
+head_wear = -1

@@ -1,0 +1,10 @@
+state = "idle"
+count = 0
+spr_idle = spr_girl_idle
+spr_writing = spr_girl_writing
+spr_drinking = spr_girl_drinking
+spr_eyes = spr_girl_eyes
+ear_x = 387
+ear_y = 183
+change_action = false
+image_count_1 = 0

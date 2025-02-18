@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>custommusic\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="UndertaleModLib, Culture=neutral, PublicKeyToken=null">
+      <HintPath>.\UndertaleModLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <Target Name="CopyAssets" AfterTargets="AfterBuild">
+    <ItemGroup>
+      <Assets Include="assets/**/*.*" />
+    </ItemGroup>
+    <RemoveDir Directories="$(TargetDir)/assets"/>
+    <Copy SourceFiles="@(Assets)" DestinationFolder="$(TargetDir)/assets/%(RecursiveDir)" SkipUnchangedFiles="false" />
+  </Target>
+    <Target Name="CopyIncludes" AfterTargets="AfterBuild">
+	    <ItemGroup>
+		    <Assets Include="IncludedFiles/**/*.*" />
+	    </ItemGroup>
+	    <Copy SourceFiles="@(Assets)" DestinationFolder="$(TargetDir)/%(RecursiveDir)" SkipUnchangedFiles="false" />
+    </Target>
+</Project>
