@@ -1,3 +1,29 @@
+if (first_time_new_scene[current_scene] == 0 && current_scene != 0)
+{
+    first_time_new_scene[current_scene] = 1
+    for (var i = 0; i < array_length(album_list[current_scene]); i++)
+    {
+        if (!(array_contains(music_list, album_list[current_scene][i])))
+        {
+            array_push(music_list, album_list[current_scene][i])
+            array_push(music_names, album_name_list[current_scene][i])
+        }
+    }
+    current_music_index = array_length(music_list) - array_length(album_list[current_scene])
+    audio_stop_sound(current_music)
+    current_music = music_list[current_music_index]
+    audio_play_sound(current_music, 99, false)
+}
+if (current_scene == 6)
+{
+    if (upsidedown == true)
+        layer_enable_fx("ef_upsidedown", true)
+    else
+        layer_enable_fx("ef_upsidedown", false)
+}
+else
+    layer_enable_fx("ef_upsidedown", false)
+calendar_text()
 if (current_language == 0)
 {
     signal = "Signal"
@@ -19,7 +45,6 @@ else if (current_language == 3)
     yudi = "雨點"
 }
 phone_contact_list[5] = [yudi, signal]
-calendar_text()
 if steam_is_cloud_enabled_for_app()
     quota = steam_get_quota_total()
 var num_unlock = 0

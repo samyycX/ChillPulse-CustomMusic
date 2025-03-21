@@ -1,3 +1,5 @@
+if (mode_switch == true)
+    return;
 variables()
 var center_x = display_get_gui_width() / 2
 var center_y = display_get_gui_height() / 2
@@ -80,30 +82,33 @@ if (show_ui == 1)
     else
         draw_sprite_ext(spr_mp_order, music_mode, (mp_x + 100), (mp_y + 10), 1, 1, 0, c_white, 1)
 }
-if show_ui
+if (!page_scene)
 {
-    draw_set_color(c_dkgray)
-    draw_line_width((mp_x + 150), (mp_y + 10), (mp_x + 250), (mp_y + 10), 3)
-    draw_set_color(c_white)
+    if show_ui
+    {
+        draw_set_color(c_dkgray)
+        draw_line_width((mp_x + 150), (mp_y + 10), (mp_x + 250), (mp_y + 10), 3)
+        draw_set_color(c_white)
+    }
+    var slider_w = 10
+    var slider_h = 10
+    if button_collision((mp_x + 150), (mp_y + 10 - slider_h), (mp_x + 250 + slider_w), (mp_y + 10 + slider_h))
+    {
+        if mc_click
+            dragging_music_slider = true
+    }
+    if (dragging_music_slider == true)
+    {
+        slider_x = mx_gui - 150 - mp_x - slider_w / 2
+        slider_x = clamp(slider_x, 0, 100)
+        if mouse_check_button_released(mb_left)
+            dragging_music_slider = false
+    }
+    if show_ui
+        draw_rectangle((mp_x + 150 + slider_x), (mp_y + 10 - slider_h), (mp_x + 150 + slider_x + slider_w), (mp_y + 10 + slider_h), false)
+    var volume = slider_x / 100
+    audio_sound_gain(current_music, volume, 10)
 }
-var slider_w = 10
-var slider_h = 10
-if button_collision((mp_x + 150), (mp_y + 10 - slider_h), (mp_x + 250 + slider_w), (mp_y + 10 + slider_h))
-{
-    if mc_click
-        dragging_music_slider = true
-}
-if (dragging_music_slider == true)
-{
-    slider_x = mx_gui - 150 - mp_x - slider_w / 2
-    slider_x = clamp(slider_x, 0, 100)
-    if mouse_check_button_released(mb_left)
-        dragging_music_slider = false
-}
-if show_ui
-    draw_rectangle((mp_x + 150 + slider_x), (mp_y + 10 - slider_h), (mp_x + 150 + slider_x + slider_w), (mp_y + 10 + slider_h), false)
-var volume = slider_x / 100
-audio_sound_gain(current_music, volume, 10)
 if (page_stickynotes == -1 && page_drink == -1 && show_ui == 1)
 {
     if (button_collision(1205, 647, 1252, 704) && page_drink != 1)
@@ -115,8 +120,8 @@ if (page_stickynotes == -1 && page_drink == -1 && show_ui == 1)
             {
                 fullscreen = false
                 window_set_showborder(true)
-                window_set_size(1280, 720)
-                window_center()
+                window_set_size((display_get_width() / 3 * 2), (display_get_height() / 3 * 2))
+                window_set_position((display_get_width() / 6), (display_get_height() / 6))
             }
             else
             {
@@ -216,6 +221,29 @@ if (page_stickynotes == -1 && page_drink == -1 && show_ui == 1)
     }
     else
         draw_sprite_ext(spr_icon_message, 0, (center_x + 380), 52, 0.6, 0.6, 0, c_white, _alpha_icon)
+    if (silence_mode == -1)
+    {
+        for (ii = 0; ii < array_length(current_sentence[current_scene]); ii++)
+        {
+            if (current_sentence[current_scene][ii] != -1 && (current_sentence[current_scene][ii] + 1) < array_length(dialogue[current_scene][ii]))
+            {
+                if (dialogue[current_scene][ii][(current_sentence[current_scene][ii] + 1)][0] != "")
+                {
+                    draw_circle_color((center_x + 395), 35, 5, 0x4C4CFF, 0x4C4CFF, false)
+                    draw_set_font(fontCJK)
+                    draw_set_valign(fa_middle)
+                    draw_set_halign(fa_center)
+                }
+            }
+        }
+        if (new_contact_notif[current_scene] == true)
+        {
+            draw_circle_color((center_x + 395), 35, 5, 0x4C4CFF, 0x4C4CFF, false)
+            draw_set_font(fontCJK)
+            draw_set_valign(fa_middle)
+            draw_set_halign(fa_center)
+        }
+    }
     if button_collision(920, 27, 970, 67)
     {
         draw_sprite_ext(spr_icon_earring, 0, (center_x + 310), 52, 0.7, 0.7, 0, c_white, _alpha_icon)
@@ -1057,6 +1085,8 @@ if (page_music_list == 1)
             color_music = 5043711
         else if array_contains(album_list[5], music_list[(i + current_music_list_start)])
             color_music = 16776960
+        else if array_contains(album_list[6], music_list[(i + current_music_list_start)])
+            color_music = 65280
         draw_set_color(color_music)
         draw_text_transformed(40, (430 + i * 35), music_names[(i + current_music_list_start)], 0.3, 0.3, 0)
         draw_set_color(c_white)
@@ -1085,7 +1115,7 @@ if (page_music_list == 1)
         var _center_x1 = 610
         var _center_y1 = 155
         var cell_size = 123
-        var _music_genre = [_text_all_music, _text_cyberpunk, _text_chinese_music, _text_custom, _text_classical, _text_ambient]
+        var _music_genre = [_text_all_music, _text_cyberpunk, _text_chinese_music, _text_custom, _text_classical, _text_ambient, _text_1980s]
         for (i = 0; i < array_length(album_name_list); i++)
         {
             var _line_num = i div 4
@@ -2432,6 +2462,21 @@ if (page_phone == 1)
     draw_set_valign(fa_middle)
     draw_set_halign(fa_center)
     draw_text_transformed_color((phone_x + 40), (phone_y + 20), _current_time, 0.3, 0.3, 0, c_white, c_white, c_white, c_white, 1)
+    draw_set_valign(fa_middle)
+    draw_set_halign(fa_left)
+    draw_text_transformed_color((phone_x + 260), (phone_y + 63), _text_silence_mode, 0.25, 0.25, 0, c_white, c_white, c_white, c_white, 1)
+    if (silence_mode == 1)
+        _ind_img = 1
+    else
+        _ind_img = 0
+    if button_collision((phone_x + 400 - 20), (phone_y + 60 - 20), (phone_x + 400 + 20), (phone_y + 60 + 20))
+    {
+        draw_sprite_ext(spr_case, _ind_img, (phone_x + 400), (phone_y + 60), 1.2, 1.2, 0, menu_color_1[current_scene], 1)
+        if mc_click
+            silence_mode *= -1
+    }
+    else
+        draw_sprite_ext(spr_case, _ind_img, (phone_x + 400), (phone_y + 60), 1, 1, 0, menu_color_1[current_scene], 1)
     if (phone_page_type != "chat")
     {
         draw_set_color(c_black)
@@ -2460,7 +2505,7 @@ if (page_phone == 1)
         {
             if (current_sentence[current_scene][ii] != -1 && (current_sentence[current_scene][ii] + 1) < array_length(dialogue[current_scene][ii]))
             {
-                if (dialogue[current_scene][ii][(current_sentence[current_scene][ii] + 1)][1] != "Me" && typeof(dialogue[current_scene][ii][(current_sentence[current_scene][ii] + 1)][1]) != "number")
+                if (dialogue[current_scene][ii][(current_sentence[current_scene][ii] + 1)][0] != "")
                     draw_circle_color(214, 556, 5, 0x4C4CFF, 0x4C4CFF, false)
             }
         }
@@ -2468,6 +2513,8 @@ if (page_phone == 1)
     switch phone_page_type
     {
         case "main":
+            draw_set_valign(fa_middle)
+            draw_set_halign(fa_center)
             draw_text_transformed_color((phone_x + 170), (phone_y + 55), _text_chat_title, 0.5, 0.5, 0, c_white, c_white, c_white, c_white, 1)
             for (i = 0; i < array_length(phone_contact_list[current_scene]); i++)
             {
@@ -2496,7 +2543,7 @@ if (page_phone == 1)
                     draw_set_alpha(1)
                     if (current_sentence[current_scene][i] != -1 && (current_sentence[current_scene][i] + 1) < array_length(dialogue[current_scene][i]))
                     {
-                        if (dialogue[current_scene][i][(current_sentence[current_scene][i] + 1)][1] != "Me" && typeof(dialogue[current_scene][i][(current_sentence[current_scene][i] + 1)][1]) != "number")
+                        if (dialogue[current_scene][i][(current_sentence[current_scene][i] + 1)][0] != "")
                             draw_circle_color((phone_x + 20), (phone_y + 105 + 70 * i), 5, 0x4C4CFF, 0x4C4CFF, false)
                     }
                 }
@@ -2579,6 +2626,7 @@ if (page_phone == 1)
                             draw_roundrect((phone_centerx - 240), 520, (phone_centerx + 270), 580, false)
                             if mc_click
                             {
+                                mode_switch_finish = false
                                 current_sentence[current_scene][current_contact[current_scene]] += 1
                                 if (current_sentence[current_scene][current_contact[current_scene]] >= 6)
                                     sentence_show_start[current_scene][current_contact[current_scene]] += 1
@@ -2595,6 +2643,7 @@ if (page_phone == 1)
                         count_message++
                         if (count_message >= 120)
                         {
+                            mode_switch_finish = false
                             current_sentence[current_scene][current_contact[current_scene]] += 1
                             count_message = 0
                             if (current_sentence[current_scene][current_contact[current_scene]] >= 6)
@@ -2602,6 +2651,23 @@ if (page_phone == 1)
                         }
                         else
                             draw_sprite_ext(spr_message_waiting, 2, (phone_x + 10), (text_y - 20 + 70), 1.2, 1.2, 0, c_white, 1)
+                    }
+                    if (array_length(dialogue[current_scene][current_contact[current_scene]][(current_sentence[current_scene][current_contact[current_scene]] + 1)]) > 2)
+                    {
+                        if (dialogue[current_scene][current_contact[current_scene]][(current_sentence[current_scene][current_contact[current_scene]] + 1)][2] == "switch")
+                        {
+                            if (mode_switch_finish == false)
+                            {
+                                mode_switch = true
+                                alarm[10] = 120
+                                mode_switch_finish = true
+                                if (upsidedown == true)
+                                    upsidedown = false
+                                else
+                                    upsidedown = true
+                                fadetoroom(false, 30, 16777215, false, false)
+                            }
+                        }
                     }
                 }
             }
@@ -3620,6 +3686,15 @@ if (page_scene == 1)
             }
             else
                 draw_sprite_ext(spr_icon_changetheme, 0, 50, (display_get_gui_height() / 2), 0.7, 0.7, 0, c_white, 1)
+            var img_num = sprite_get_number(spr_background)
+            var interval = 30
+            var rad = 5
+            for (var a = 0; a < (img_num - 2); a++)
+            {
+                draw_circle_color((display_get_gui_width() / 2 - (img_num - 2) * interval / 2 + a * interval), (display_get_gui_height() - 50), rad, c_dkgray, c_dkgray, false)
+                if (a == current_scene_start)
+                    draw_circle_color((display_get_gui_width() / 2 - (img_num - 2) * interval / 2 + a * interval), (display_get_gui_height() - 50), rad, c_white, c_white, false)
+            }
             break
         case "detail":
             start_x = display_get_gui_width() / 2 + 50
@@ -3631,11 +3706,11 @@ if (page_scene == 1)
             draw_set_valign(fa_middle)
             draw_set_halign(fa_left)
             draw_text_transformed_color(start_x, (start_y - 50), scene_name[current_scene_select], 0.6, 0.6, 0, c_white, c_white, c_white, c_white, 1)
-            draw_text_transformed_color((start_x + 350), (start_y - 50), scene_year[current_scene_select], 0.6, 0.6, 0, c_silver, c_silver, c_silver, c_silver, 1)
+            draw_text_transformed_color((start_x + 450), (start_y - 50), scene_year[current_scene_select], 0.6, 0.6, 0, c_silver, c_silver, c_silver, c_silver, 1)
             draw_text_ext_transformed_color(start_x, (start_y + 170), scene_descrip[current_scene_select], 90, 1700, 0.3, 0.3, 0, 12632256, 12632256, 12632256, 12632256, 0.8)
             if (debug_mode == false)
             {
-                if ((current_scene_select == 1 && level >= 2) || current_scene_select == 0 || (current_scene_select == 2 && level >= 7) || (current_scene_select == 3 && level >= 13) || (current_scene_select == 4 && level >= 20) || (current_scene_select == 5 && level >= 30))
+                if ((current_scene_select == 1 && level >= 2) || current_scene_select == 0 || (current_scene_select == 2 && level >= 7) || (current_scene_select == 3 && level >= 13) || (current_scene_select == 4 && level >= 20) || (current_scene_select == 5 && level >= 30) || (current_scene_select == 6 && level >= 31))
                 {
                     if button_collision(690, 530, 820, 574)
                     {
@@ -3658,9 +3733,11 @@ if (page_scene == 1)
                         draw_text_transformed_color((start_x + 5), 554, (_text_locked + "  20"), 0.5, 0.5, 0, c_white, c_white, c_white, c_white, 0.5)
                     if (current_scene_select == 5)
                         draw_text_transformed_color((start_x + 5), 554, (_text_locked + "  30"), 0.5, 0.5, 0, c_white, c_white, c_white, c_white, 0.5)
+                    if (current_scene_select == 6)
+                        draw_text_transformed_color((start_x + 5), 554, (_text_locked + "  31"), 0.5, 0.5, 0, c_white, c_white, c_white, c_white, 0.5)
                 }
             }
-            else if (current_scene_select == 0 || current_scene_select == 1 || current_scene_select == 2 || current_scene_select == 3 || current_scene_select == 4 || current_scene_select == 5)
+            else if (current_scene_select == 0 || current_scene_select == 1 || current_scene_select == 2 || current_scene_select == 3 || current_scene_select == 4 || current_scene_select == 5 || current_scene_select == 6)
             {
                 if button_collision(690, 530, 820, 574)
                 {
@@ -3683,6 +3760,8 @@ if (page_scene == 1)
                     draw_text_transformed_color((start_x + 5), 554, (_text_locked + "  20"), 0.5, 0.5, 0, c_white, c_white, c_white, c_white, 0.5)
                 if (current_scene_select == 5)
                     draw_text_transformed_color((start_x + 5), 554, (_text_locked + "  30"), 0.5, 0.5, 0, c_white, c_white, c_white, c_white, 0.5)
+                if (current_scene_select == 6)
+                    draw_text_transformed_color((start_x + 5), 554, (_text_locked + "  31"), 0.5, 0.5, 0, c_white, c_white, c_white, c_white, 0.5)
             }
             break
     }
@@ -3827,6 +3906,15 @@ if (page_livechat == true)
                 break
             case "error":
                 draw_text_transformed_color((lc_x1 + 110), (lc_y2 - 40), _text_only_english, 0.25, 0.25, 0, c_white, c_white, c_white, c_white, 1)
+                livechat_cd += 1
+                if (livechat_cd >= (room_speed * 5))
+                {
+                    livechat_cd = 0
+                    livechat_state = "idle"
+                }
+                break
+            case "politic":
+                draw_text_transformed_color((lc_x1 + 110), (lc_y2 - 40), _text_politic, 0.25, 0.25, 0, c_white, c_white, c_white, c_white, 1)
                 livechat_cd += 1
                 if (livechat_cd >= (room_speed * 5))
                 {

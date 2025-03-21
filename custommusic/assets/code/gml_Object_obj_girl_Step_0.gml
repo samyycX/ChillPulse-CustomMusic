@@ -40,6 +40,13 @@ else if (obj_controller.current_scene == 5)
     spr_writing = asset_get_index("spr_girl_space_writing_" + (string(obj_controller.current_girl_cloth[obj_controller.current_scene] + 1)))
     spr_drinking = asset_get_index("spr_girl_space_drinking_" + (string(obj_controller.current_girl_cloth[obj_controller.current_scene] + 1)))
 }
+else if (obj_controller.current_scene == 6)
+{
+    spr_base = asset_get_index("spr_girl_strange_base_" + (string(obj_controller.current_girl_cloth[obj_controller.current_scene] + 1)))
+    spr_idle = asset_get_index("spr_girl_strange_idle_" + (string(obj_controller.current_girl_cloth[obj_controller.current_scene] + 1)))
+    spr_writing = asset_get_index("spr_girl_strange_writing_" + (string(obj_controller.current_girl_cloth[obj_controller.current_scene] + 1)))
+    spr_drinking = asset_get_index("spr_girl_strange_drinking_" + (string(obj_controller.current_girl_cloth[obj_controller.current_scene] + 1)))
+}
 switch state
 {
     case "idle":

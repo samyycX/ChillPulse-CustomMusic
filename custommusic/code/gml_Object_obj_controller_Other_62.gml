@@ -105,15 +105,17 @@ if (ds_map_find_value(async_load, "id") == send_livechat)
 {
     if (ds_map_find_value(async_load, "status") == 0)
     {
-        @@try_hook@@(2668, 2724)
+        @@try_hook@@(2736, 2792)
         response_data = ds_map_find_value(async_load, "result")
         show_debug_message("sendlivechat OK ")
         show_debug_message(response_data)
         livechat_fail_count = 0
         if (response_data == "1")
             livechat_state = "wait"
-        else
+        else if (response_data == "0")
             livechat_state = "error"
+        else if (response_data == "2")
+            livechat_state = "politic"
         @@try_unhook@@()
     }
     else
@@ -123,7 +125,7 @@ if (ds_map_find_value(async_load, "id") == get_livechat)
 {
     if (ds_map_find_value(async_load, "status") == 0)
     {
-        @@try_hook@@(3000, 3056)
+        @@try_hook@@(3068, 3124)
         response_data = ds_map_find_value(async_load, "result")
         show_debug_message("getlivechat OK ")
         json_map = json_parse(response_data)

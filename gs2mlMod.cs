@@ -59,7 +59,7 @@ public class CustomMusic
         {
 
             var musicIndexs = musics[i];
-            allMusicHookCode += $"\nalbum_list[{6+i}]=[{string.Join(',', musicIndexs)}]\nalbum_name_list[{6+i}]=[{string.Join(',', musicIndexs.Select(index => $"\"{musicNames[index]}\"")).Replace('_', ' ')}]";
+            allMusicHookCode += $"\nalbum_list[{7+i}]=[{string.Join(',', musicIndexs)}]\nalbum_name_list[{7+i}]=[{string.Join(',', musicIndexs.Select(index => $"\"{musicNames[index]}\"")).Replace('_', ' ')}]";
             genreNameHookCode += $"\n_text_custommusic_genre_{i} = \"{genres[i]}\"";
             // genreColorHookCode += $"""
             // else if array_contains(album_list[{6+i}], music_list[(i + current_music_list_start)])
@@ -82,8 +82,8 @@ public class CustomMusic
         
         cursor.GotoNext("pop.v.v local._music_genre");
         cursor.index -= 1;
-        cursor.Replace($"call.i @@NewGMLArray@@(argc={6+newGenres.Count})");
-        cursor.index -= 6;
+        cursor.Replace($"call.i @@NewGMLArray@@(argc={7+newGenres.Count})");
+        cursor.index -= 7;
         newGenres.Reverse();
         foreach( var genre in newGenres)
         {

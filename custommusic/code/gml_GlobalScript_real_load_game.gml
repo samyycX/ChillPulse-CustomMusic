@@ -266,5 +266,15 @@ function real_load_game(argument0) //gml_Script_real_load_game
     @@try_hook@@(11888, 11944)
     time_format_24 = _main._time_format_24
     @@try_unhook@@()
+    @@try_hook@@(12136, 12192)
+    for (i = 0; i < array_length(_main._first_time_new_scene); i++)
+        first_time_new_scene[i] = _main._first_time_new_scene[i]
+    @@try_unhook@@()
+    @@try_hook@@(12272, 12328)
+    upsidedown = _main._upsidedown
+    @@try_unhook@@()
+    @@try_hook@@(12408, 12464)
+    silence_mode = _main._silence_mode
+    @@try_unhook@@()
 }
 

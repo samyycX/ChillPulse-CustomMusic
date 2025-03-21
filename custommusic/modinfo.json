@@ -1,6 +1,6 @@
 {
 	"modName":"custommusic",
-	"authors":["Unknown Modder"],
-	"description":"The custommusic mod.",
+	"authors":["samyyc"],
+	"description":"A ChillPulse plugin to add your own music to game.",
 	"priority":0
 }

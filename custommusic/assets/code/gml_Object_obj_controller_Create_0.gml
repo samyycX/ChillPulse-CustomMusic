@@ -3,24 +3,32 @@ alarm[1] = 120
 alarm[3] = 420
 alarm[7] = 60
 alarm[9] = 60
-color_diary_text = [0, 16776960, 0, 0, 0, 16776960]
-color_diary_real_text = [0, 16711935, 0, 0, 0, 16711935]
-color_hub = [4210752, 16711935, 4210752, 4210752, 4210752, 16711935]
-drink_icon_list = [spr_coffee_machine_icon, spr_coffee_machine_icon_cyberpunk, spr_coffee_machine_icon_tea, spr_coffee_machine_icon_bar, spr_coffee_machine_icon_europe, spr_coffee_machine_icon_space]
-drink_1_list = [spr_milk, spr_spirit, spr_tea_bag, spr_whiskey, spr_herbs, spr_electro_water]
-drink_2_list = [spr_coffee_bag, spr_juice, spr_jasmin, spr_rum, spr_berries, spr_protein]
-drink_3_list = [spr_sirop, spr_liquor, spr_goji, spr_absinte, spr_wine, spr_vitamin_jelly]
-spr_final_drinks_list = [spr_final_cup1, spr_final_cup2, spr_final_cup3, spr_final_cup4, spr_final_cup5, spr_final_cup6]
-menu_color_1 = [4210752, 16776960, 4210752, 16777215, 0, 16776960]
-menu_color_2 = [4210752, 16711935, 4210752, 8421504, 0, 16711935]
-menu_color_backsign = [0, 16776960, 0, 16777215, 16777215, 16776960]
-spr_tag_list = [spr_tag, spr_tag_cyberpunk, spr_tag, spr_tag, spr_tag, spr_tag_cyberpunk]
-color_diary_0 = [0, 16776960, 0, 0, 0, 16776960]
-color_slot_list = [0, 16777215, 0, 0, 0, 16777215]
-spr_stickynote_list = [spr_stickynote, spr_stickynote_cyber, spr_stickynote, spr_stickynote, spr_stickynote, spr_stickynote_cyber]
-color_note = [0, 16711935, 0, 0, 0, 16711935]
-color_diary_fond = [0, 16777215, 0, 0, 0, 16777215]
-list_scene = ["modern", "cyberpunk", "china", "bar", "europe", "space"]
+color_diary_text = [0, 16776960, 0, 0, 0, 16776960, 0]
+color_diary_real_text = [0, 16711935, 0, 0, 0, 16711935, 0]
+color_hub = [4210752, 16711935, 4210752, 4210752, 4210752, 16711935, 4210752]
+drink_icon_list = [spr_coffee_machine_icon, spr_coffee_machine_icon_cyberpunk, spr_coffee_machine_icon_tea, spr_coffee_machine_icon_bar, spr_coffee_machine_icon_europe, spr_coffee_machine_icon_space, spr_coffee_machine_icon_strange]
+drink_1_list = [spr_milk, spr_spirit, spr_tea_bag, spr_whiskey, spr_herbs, spr_electro_water, spr_essence]
+drink_2_list = [spr_coffee_bag, spr_juice, spr_jasmin, spr_rum, spr_berries, spr_protein, spr_mindlight]
+drink_3_list = [spr_sirop, spr_liquor, spr_goji, spr_absinte, spr_wine, spr_vitamin_jelly, spr_coca]
+spr_final_drinks_list = [spr_final_cup1, spr_final_cup2, spr_final_cup3, spr_final_cup4, spr_final_cup5, spr_final_cup6, spr_final_cup7]
+menu_color_1 = [4210752, 16776960, 4210752, 16777215, 0, 16776960, 0]
+menu_color_2 = [4210752, 16711935, 4210752, 8421504, 0, 16711935, 0]
+menu_color_backsign = [0, 16776960, 0, 16777215, 16777215, 16776960, 16777215]
+spr_tag_list = [spr_tag, spr_tag_cyberpunk, spr_tag, spr_tag, spr_tag, spr_tag_cyberpunk, spr_tag]
+color_diary_0 = [0, 16776960, 0, 0, 0, 16776960, 0]
+color_slot_list = [0, 16777215, 0, 0, 0, 16777215, 0]
+spr_stickynote_list = [spr_stickynote, spr_stickynote_cyber, spr_stickynote, spr_stickynote, spr_stickynote, spr_stickynote_cyber, spr_stickynote]
+color_note = [0, 16711935, 0, 0, 0, 16711935, 0]
+color_diary_fond = [0, 16777215, 0, 0, 0, 16777215, 0]
+list_scene = ["modern", "cyberpunk", "china", "bar", "europe", "space", "stranger"]
+drink_unlock[0] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+drink_unlock[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+drink_unlock[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+drink_unlock[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+drink_unlock[4] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+drink_unlock[5] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+drink_unlock[6] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+first_time_new_scene = [0, 0, 0, 0, 0, 0, 0]
 textbox_write_mail = -4
 textbox_reply_mail = -4
 textbox_show_mail = -4
@@ -111,23 +119,20 @@ score_show_delay = 0
 current_scene_select = 0
 current_scene = 0
 time_total = 0
-drink_unlock[0] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-drink_unlock[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-drink_unlock[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-drink_unlock[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-drink_unlock[4] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-drink_unlock[5] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 lover = "Her"
 me = "Me"
 rj = "RJ"
 signal = "Signal"
 yudi = "Yudi"
+susie = "Susie"
+dye = "Dye"
 current_sentence[0] = [-1, -1]
 current_sentence[1] = [-1]
 current_sentence[2] = [0]
 current_sentence[3] = [-1]
 current_sentence[4] = [0]
 current_sentence[5] = [-1, -1]
+current_sentence[6] = [-1, -1]
 sentence_show_start[0][0] = 0
 sentence_show_start[0][1] = 0
 sentence_show_start[1][0] = 0
@@ -136,37 +141,43 @@ sentence_show_start[3][0] = 0
 sentence_show_start[4][0] = 0
 sentence_show_start[5][0] = 0
 sentence_show_start[5][1] = 0
+sentence_show_start[6][0] = 0
+sentence_show_start[6][1] = 0
 phone_contact_list[0] = [rj, lover]
 phone_contact_list[1] = [lover]
 phone_contact_list[2] = [lover]
 phone_contact_list[3] = [lover]
 phone_contact_list[4] = [lover]
 phone_contact_list[5] = [yudi, signal]
-count_message = 0
+phone_contact_list[6] = [susie, dye]
 new_contact_notif[0] = true
 new_contact_notif[1] = true
 new_contact_notif[2] = false
 new_contact_notif[3] = true
 new_contact_notif[4] = false
 new_contact_notif[5] = true
+new_contact_notif[6] = true
 phone_contact_unlock[0] = -1
 phone_contact_unlock[1] = -1
 phone_contact_unlock[2] = -1
 phone_contact_unlock[3] = -1
 phone_contact_unlock[4] = -1
 phone_contact_unlock[5] = -1
+phone_contact_unlock[6] = -1
 current_contact[0] = 0
 current_contact[1] = 0
 current_contact[2] = 0
 current_contact[3] = 0
 current_contact[4] = 0
 current_contact[5] = 0
+current_contact[6] = 0
 current_npc[0] = 1
 current_npc[1] = 0
 current_npc[2] = 0
 current_npc[3] = 0
 current_npc[4] = 0
 current_npc[5] = 0
+current_npc[6] = 0
 phone_page_type = "main"
 phone_dialogue()
 _current_year = 2024
@@ -184,6 +195,10 @@ _select_month = 1
 _select_year = 2024
 current_diary_page = 0
 task_days = []
+silence_mode = -1
+mode_switch_finish = false
+mode_switch = false
+upsidedown = false
 fish_page_state = "idle"
 if (os_get_region() == "USA")
     time_format_24 = -1
@@ -294,6 +309,7 @@ current_task_diary_start = 0
 current_task_start_fav = 0
 tutorial_finish = false
 page_livechat = false
+count_message = 0
 change_title_inputbox = -4
 diary_line_start = 0
 diary_cover_line_start = 0
@@ -378,7 +394,7 @@ if (!debug_mode)
     load_game()
 if (array_length(music_list) > 0)
 {
-    @@try_hook@@(8876, 8968)
+    @@try_hook@@(9528, 9620)
     current_music = music_list[current_music_index]
     @@try_unhook@@()
     audio_play_sound(current_music, 99, false)
@@ -393,5 +409,12 @@ add_current_day_to_tasks()
 if (debug_mode == true)
 {
     score_total = 100000
-    level = 30
+    level = 50
 }
+if (display_get_width() >= 1920)
+{
+    window_set_size((display_get_width() / 3 * 2), (display_get_height() / 3 * 2))
+    window_center()
+}
+else
+    window_center()

@@ -86,7 +86,10 @@ function save_game(argument0) //gml_Script_save_game
         _current_girl_cloth: current_girl_cloth,
         _current_npc: current_npc,
         _livechat_name: livechat_name,
-        _time_format_24: time_format_24
+        _time_format_24: time_format_24,
+        _first_time_new_scene: first_time_new_scene,
+        _upsidedown: upsidedown,
+        _silence_mode: silence_mode
     }
 
     var _string = json_stringify(_main)

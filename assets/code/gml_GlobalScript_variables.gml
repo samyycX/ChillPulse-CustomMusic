@@ -71,6 +71,9 @@ function variables() //gml_Script_variables
     _text_time_format_24h = "Time format 24h"
     _text_sell_all_fish = "Sell all"
     _text_confirm_sell_all_fish = "Do you want to sell all your fish?"
+    _text_politic = "Let's keep the chat politics-free."
+    _text_1980s = "1980s"
+    _text_silence_mode = "Do Not Disturb"
     if (current_language == 0)
     {
         _text_timer = "Pomodoro Duration"
@@ -195,6 +198,8 @@ function variables() //gml_Script_variables
         _text_no = "否"
         _text_confirm_sell_all_fish = "你想要卖掉所有的鱼吗？"
         _text_sell_all_fish = "全部卖出"
+        _text_politic = "让我们保持聊天无政治内容。"
+        _text_silence_mode = "消息免打扰"
     }
     else if (current_language == 2)
     {
@@ -283,6 +288,8 @@ function variables() //gml_Script_variables
         _text_no = "いいえ"
         _text_sell_all_fish = "すべて売る"
         _text_confirm_sell_all_fish = "すべての魚を売りますか？"
+        _text_politic = "チャットでは政治の話題を控えましょう。"
+        _text_silence_mode = "通知オフ"
     }
     else if (current_language == 3)
     {
@@ -370,6 +377,8 @@ function variables() //gml_Script_variables
         _text_no = "否"
         _text_confirm_sell_all_fish = "你想要賣掉所有的魚嗎？"
         _text_sell_all_fish = "全部賣出"
+        _text_politic = "讓我們保持聊天無政治內容。"
+        _text_silence_mode = "消息免打擾"
     }
     if (current_language == 4)
     {
@@ -455,6 +464,8 @@ function variables() //gml_Script_variables
         _text_no = "Non"
         _text_sell_all_fish = "Tout vendre"
         _text_confirm_sell_all_fish = "Voulez-vous vendre tous vos poissons ?"
+        _text_politic = "Gardons la discussion sans politique."
+        _text_silence_mode = "Mode Silence"
     }
     if (current_language == 5)
     {
@@ -541,6 +552,8 @@ function variables() //gml_Script_variables
         _text_no = "Нет"
         _text_sell_all_fish = "Продать все"
         _text_confirm_sell_all_fish = "Вы хотите продать всю свою рыбу?"
+        _text_politic = "Давайте избегать политики в чате."
+        _text_silence_mode = "Режим тишины"
     }
     if (current_language == 6)
     {
@@ -625,6 +638,8 @@ function variables() //gml_Script_variables
         _text_no = "아니요"
         _text_sell_all_fish = "모두 판매"
         _text_confirm_sell_all_fish = "모든 물고기를 판매하시겠습니까?"
+        _text_politic = "채팅에서 정치 이야기는 자제해주세요."
+        _text_silence_mode = "알림 차단 모드"
     }
     if (current_language == 7)
     {
@@ -709,6 +724,8 @@ function variables() //gml_Script_variables
         _text_no = "Nein"
         _text_sell_all_fish = "Alle verkaufen"
         _text_confirm_sell_all_fish = "Möchten Sie alle Ihre Fische verkaufen?"
+        _text_politic = "Lassen Sie uns die Unterhaltung politikfrei halten."
+        _text_silence_mode = "Nicht-Stören-Modus"
     }
     if (current_language == 8)
     {
@@ -794,6 +811,8 @@ function variables() //gml_Script_variables
         _text_no = "No"
         _text_sell_all_fish = "Vender todo"
         _text_confirm_sell_all_fish = "¿Quieres vender todos tus peces?"
+        _text_politic = "Mantengamos el chat libre de política."
+        _text_silence_mode = "Modo Silencio"
     }
     if (current_language == 9)
     {
@@ -877,6 +896,8 @@ function variables() //gml_Script_variables
         _text_no = "No"
         _text_sell_all_fish = "Vendi tutto"
         _text_confirm_sell_all_fish = "Vuoi vendere tutti i tuoi pesci?"
+        _text_politic = "Manteniamo la chat priva di politica."
+        _text_silence_mode = "Modalità Silenziosa"
     }
     if (current_language == 10)
     {
@@ -961,6 +982,8 @@ function variables() //gml_Script_variables
         _text_no = "Não"
         _text_sell_all_fish = "Vender tudo"
         _text_confirm_sell_all_fish = "Você quer vender todos os seus peixes?"
+        _text_politic = "Vamos manter o chat livre de política."
+        _text_silence_mode = "Modo Silencioso"
     }
 }
 
